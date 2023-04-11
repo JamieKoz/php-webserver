@@ -1,0 +1,22 @@
+#!/usr/bin/env php
+<?php
+use WebServer\Server; 
+use WebServer\Request;
+use WebServer\Response;
+
+require 'vendor/autoload.php';
+
+// This is a simple HTTP server that will listen on port 8080 and return "Hello World!" for every request.
+array_shift($argv);
+
+if(empty($argv)) {
+    $port = 80;
+} else {
+    $port = array_shift($argv);
+}
+
+$server = new Server('127.0.0.1', 8080);
+
+$server->listen(function($request, $response) {
+return new Response(200, 'Hello World!');
+});
