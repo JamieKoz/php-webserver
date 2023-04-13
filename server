@@ -15,8 +15,10 @@ if(empty($argv)) {
     $port = array_shift($argv);
 }
 
-$server = new Server('127.0.0.1', 8080);
+$server = new Server('127.0.0.1', $port);
 
-$server->listen(function($request, $response) {
-return new Response(200, 'Hello World!');
+$server->listen(function(Request $request) {
+    echo $request->method(). ' ' . $request->uri() . "\n";
+
+    return new Response( '<pre>'.print_r( $request, true ).'</pre>' );
 });

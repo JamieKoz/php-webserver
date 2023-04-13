@@ -1,7 +1,9 @@
 <?php
 
 namespace WebServer;
-
+use WebServer\Request;
+use WebServer\Response;
+use WebServer\Exception;
 class Server {
     protected $host = null;
     protected $port = null;
